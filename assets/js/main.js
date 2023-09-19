@@ -1,6 +1,7 @@
 gsap.registerPlugin(ScrollTrigger);
 
 (() => {
+    const matchMedia = gsap.matchMedia();
 
     document.addEventListener('DOMContentLoaded', () => {
         // MAIN LOGO ANIMATION
@@ -35,22 +36,6 @@ gsap.registerPlugin(ScrollTrigger);
                 end: '2000px',
                 scrub: 1,
                 pin: true,
-                // onEnter: () => {
-                //     gsap.fromTo('#information .decorator', {
-                //         y: '-100vh',
-                //     },
-                //         {
-                //             y: '-100%',
-                //         });
-                // },
-                // onLeaveBack: () => {
-                //     gsap.fromTo('#information .decorator', {
-                //         y: '-100%',
-                //     },
-                //         {
-                //             y: '-100vh',
-                //         });
-                // },
             }
         }),
             tlDecorator = gsap.timeline({
@@ -83,5 +68,135 @@ gsap.registerPlugin(ScrollTrigger);
                 stagger: 2,
             });
         // END INFORMATION ANIMATION
+
+        // GALLERY ANIMATION
+        matchMedia.add('(max-width: 1279px)', () => {
+            // FIRST ROW
+            gsap.from('#gallery .left.first', {
+                scrollTrigger: {
+                    trigger: '#gallery .left.first',
+                    end: '0',
+                    scrub: 1,
+                },
+                x: '100%',
+                delay: 1,
+            });
+
+            gsap.from('#gallery .right.first', {
+                scrollTrigger: {
+                    trigger: '#gallery .right.first',
+                    end: '0',
+                    scrub: 1,
+                },
+                x: '-100%',
+                delay: 1,
+            });
+
+            // SECOND ROW
+            gsap.from('#gallery .left.second', {
+                scrollTrigger: {
+                    trigger: '#gallery .left.second',
+                    end: '0',
+                    scrub: 1,
+                },
+                x: '100%',
+                delay: 1.5,
+            });
+
+            gsap.from('#gallery .right.second', {
+                scrollTrigger: {
+                    trigger: '#gallery .right.second',
+                    end: '0',
+                    scrub: 1,
+                },
+                x: '-100%',
+                delay: 1.5,
+            });
+
+            // THIRD ROW
+            gsap.from('#gallery .left.last', {
+                scrollTrigger: {
+                    trigger: '#gallery .left.last',
+                    end: '0',
+                    scrub: 1,
+                },
+                x: '100%',
+                delay: 2,
+            });
+            
+            gsap.from('#gallery .right.last', {
+                scrollTrigger: {
+                    trigger: '#gallery .right.last',
+                    end: '0',
+                    scrub: 1,
+                },
+                x: '-100%',
+                delay: 2,
+            });
+        })
+
+        matchMedia.add('(min-width: 1280px)', () => {
+            // FIRST ROW
+            gsap.from('#gallery .left.first', {
+                scrollTrigger: {
+                    trigger: '#gallery .left.first',
+                    end: 'top',
+                    scrub: 1,
+                },
+                x: '100%',
+            });
+
+            gsap.from('#gallery .right.first', {
+                scrollTrigger: {
+                    trigger: '#gallery .right.first',
+                    end: 'top',
+                    scrub: 1,
+                },
+                x: '-100%',
+            });
+
+            // SECOND ROW
+            gsap.from('#gallery .left.second', {
+                scrollTrigger: {
+                    trigger: '#gallery .left.second',
+                    end: 'top',
+                    scrub: 1,
+                },
+                x: '100%',
+            });
+
+            gsap.from('#gallery .right.second', {
+                scrollTrigger: {
+                    trigger: '#gallery .right.second',
+                    end: 'top',
+                    scrub: 1,
+                },
+                x: '-100%',
+            });
+
+            // THIRD ROW
+            gsap.from('#gallery .left.last', {
+                scrollTrigger: {
+                    trigger: '#gallery .left.last',
+                    end: 'top',
+                    scrub: 1,
+                },
+                x: '100%',
+            });
+
+            gsap.from('#gallery .right.last', {
+                scrollTrigger: {
+                    trigger: '#gallery .right.last',
+                    end: 'top',
+                    scrub: 1,
+                },
+                x: '-100%',
+            });
+        })
+
+
+
+
+        // END GALLERY IMAGE
     });
 })();
